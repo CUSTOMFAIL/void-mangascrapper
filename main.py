@@ -113,7 +113,7 @@ async def create(event):
                             os.remove(icon_path)
                             chapters = r.chapter_list
                             print("done")
-                            mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n 3. ENTER A CHAPTER NO.\n 4. DOWNLOAD LAST CHAPTER"
+                            mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n3. ENTER A CHAPTER NO.\n4. DOWNLOAD LAST CHAPTER"
                             await conv.send_message("Enter the number : \n\n`{}`".format(str(mg)))
                             mgres = await conv.get_response(timeout = 90000)
                             if mgres.text == 1 or mgres.text == "1":
@@ -130,7 +130,7 @@ async def create(event):
                                 minint = await conv.get_response(timeout = 90000)
                                 minint = minint.text
                                 minint = int(minint)
-                                await conv.send_message("Enter till which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 65\n\nIf you want to download till last chapter enter: -1\n\nJust a friendly suggestion if you want to download from 15 to 65 use 66 instead so that u wont miss any sub chapter like 65.1 or 65.2 or 15.0))")
+                                await conv.send_message("Enter till which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 65\n\nIf you want to download till last chapter enter: -1\n\nJust a friendly suggestion if you want to download from 15 to 65 use 66 instead so that u wont miss any sub chapter like 65.1 or 65.2)")
                                 maxint = await conv.get_response(timeout = 90000)
                                 maxint = maxint.text
                                 maxint = int(maxint)
