@@ -106,7 +106,7 @@ async def create(event):
                             icon_path = r.download_icon("./icon.png")
                             chapters = r.chapter_list
                             for c in chapters:
-                                app = "{c.chapter}")
+                                app = (f"#{c.chapter} | {c.title}")
                                 chap.append(app)
                             print(r.title, r.views)
                             await client.send_file(event.chat_id, file = icon_path, caption = "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
