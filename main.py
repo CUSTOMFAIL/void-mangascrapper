@@ -106,21 +106,84 @@ async def create(event):
                             icon_path = r.download_icon("./icon.png")
                             chapters = r.chapter_list
                             for c in chapters:
-                                app = (f"#{c.chapter} | {c.title}")
+                                app = "{c.chapter}")
                                 chap.append(app)
                             print(r.title, r.views)
                             await client.send_file(event.chat_id, file = icon_path, caption = "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
                             os.remove(icon_path)
                             chapters = r.chapter_list
                             print("done")
-                            for c in chapters:
-                                print("started")
-                                print(f"#{c.chapter} | {c.title}")
-                                print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
-                                chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
-                                os.remove(chapter_path)
-                                z +=1
+                            mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n 3. ENTER A CHAPTER NO.\n 4. DOWNLOAD LAST CHAPTER"
+                            await conv.send_message("Enter the number : \n\n`{}`".format(str(mg)))
+                            mgres = await conv.get_response(timeout = 90000)
+                            if mgres.text == 1 or mgres.text == "1":
+                                for c in chapters:
+                                    print("started")
+                                    print(f"#{c.chapter} | {c.title}")
+                                    print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
+                                    chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                    await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                    os.remove(chapter_path)
+                                    z +=1
+                            await client.send_message(event.chat_id, "COMPLETED")
+                            elif mgres.text == 2 or mgres.text == "2":
+                                await conv.send_message("Enter from which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 15\n\nJust a friendly suggestion if you want to download from 15 to 65 use 14 instead so that u wont miss any sub chapter like 14.9 or 15.0)")
+                                minint = await conv.get_response(timeout = 90000)
+                                minint = minint.text
+                                minint = int(minint)
+                                await conv.send_message("Enter till which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 65\n\nIf you want to download till last chapter enter: -1\n\nJust a friendly suggestion if you want to download from 15 to 65 use 66 instead so that u wont miss any sub chapter like 65.1 or 65.2 or 15.0))")
+                                maxint = await conv.get_response(timeout = 90000)
+                                maxint = maxint.text
+                                maxint = int(maxint)
+                                for c in chapters:
+                                    if maxint == -1:
+                                        if int(c.chapter) >= minint:
+                                            print("started")
+                                            print(f"#{c.chapter} | {c.title}")
+                                            print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
+                                            chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                            os.remove(chapter_path)
+                                            z +=1
+                                    else:      
+                                        if int(c.chapter) >= minint and int(c.chapter) <= maxint:
+                                            print("started")
+                                            print(f"#{c.chapter} | {c.title}")
+                                            print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
+                                            chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                            os.remove(chapter_path)
+                                            z +=1    
+                                            
+                            elif mgres.text == 3 or mgres.text == "3":
+                                await conv.send_message("Enter from which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 15)")
+                                chapnum = await conv.get_response(timeout = 90000)
+                                chapnum = int(chapnum.text)
+                                for c in chapters:
+                                    if int(c.chapter) == chapnum:
+                                        print("started")
+                                        print(f"#{c.chapter} | {c.title}")
+                                        print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
+                                        chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                        os.remove(chapter_path)
+                                        z +=1
+                            elif mgres.text == 4 or mgres.text == "4":
+                                lst = []
+                                for c in chapters:
+                                    lst.append(int(c.chapter))
+                                for c in chapters:
+                                    if int(c.chapter) == int(lst[-1])
+                                        print("started")
+                                        print(f"#{c.chapter} | {c.title}")
+                                        print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
+                                        chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                        os.remove(chapter_path)
+                                        z +=1
+                                
+                            else:
+                                pass
                             await client.send_message(event.chat_id, "COMPLETED")
 
 
