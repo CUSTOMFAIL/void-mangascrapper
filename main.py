@@ -109,7 +109,7 @@ async def create(event):
                                 app = (f"#{c.chapter} | {c.title}")
                                 chap.append(app)
                             print(r.title, r.views)
-                            await client.send_file(event.chat_id, file = icon_path, caption = "Chapter found :{}".format(len(chap)))
+                            await client.send_file(event.chat_id, file = icon_path, caption = "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
                             os.remove(icon_path)
                             chapters = r.chapter_list
                             print("done")
