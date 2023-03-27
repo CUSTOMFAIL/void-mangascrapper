@@ -172,7 +172,7 @@ async def create(event):
                                 for c in chapters:
                                     lst.append(int(c.chapter))
                                 for c in chapters:
-                                    if int(c.chapter) == int(lst[-1])
+                                    if int(c.chapter) == int(lst[-1]):
                                         print("started")
                                         print(f"#{c.chapter} | {c.title}")
                                         print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
