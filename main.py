@@ -116,15 +116,22 @@ async def create(event):
                             mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n3. ENTER A CHAPTER NO.\n4. DOWNLOAD LAST CHAPTER"
                             await conv.send_message("Enter the number : \n\n`{}`".format(str(mg)))
                             mgres = await conv.get_response(timeout = 90000)
+                            error = ""
+                            chaperror = ""
                             if mgres.text == 1 or mgres.text == "1":
                                 for c in chapters:
                                     print("started")
                                     print(f"#{c.chapter} | {c.title}")
                                     print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
-                                    chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                    await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
-                                    os.remove(chapter_path)
-                                    z +=1
+                                    try:
+                                        chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                        os.remove(chapter_path)
+                                        z +=1
+                                    except Exception as e:
+                                        error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                        await client.send_message(event.chat_id, error)
+                                        chaperror += "{}\n".format(c.chapter)
                             elif mgres.text == 2 or mgres.text == "2":
                                 await conv.send_message("Enter from which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 15\n\nJust a friendly suggestion if you want to download from 15 to 65 use 14 instead so that u wont miss any sub chapter like 14.9 or 15.0)")
                                 minint = await conv.get_response(timeout = 90000)
@@ -140,19 +147,29 @@ async def create(event):
                                             print("started")
                                             print(f"#{c.chapter} | {c.title}")
                                             print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
-                                            chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
-                                            os.remove(chapter_path)
-                                            z +=1
+                                            try:
+                                                chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                                os.remove(chapter_path)
+                                                z +=1
+                                            except Exception as e:
+                                                error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                                await client.send_message(event.chat_id, error)
+                                                chaperror += "{}\n".format(c.chapter)
                                     else:      
                                         if int(c.chapter) >= minint and int(c.chapter) <= maxint:
                                             print("started")
                                             print(f"#{c.chapter} | {c.title}")
                                             print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
-                                            chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
-                                            os.remove(chapter_path)
-                                            z +=1    
+                                            try:
+                                                chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                                os.remove(chapter_path)
+                                                z +=1
+                                            except Exception as e:
+                                                error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                                await client.send_message(event.chat_id, error)
+                                                chaperror += "{}\n".format(c.chapter)
                                             
                             elif mgres.text == 3 or mgres.text == "3":
                                 await conv.send_message("Enter from which chapter you have to download:\n(For example if you have to download from 15 to 65. Enter 15)")
@@ -163,10 +180,15 @@ async def create(event):
                                         print("started")
                                         print(f"#{c.chapter} | {c.title}")
                                         print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
-                                        chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
-                                        os.remove(chapter_path)
-                                        z +=1
+                                        try:
+                                            chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                            os.remove(chapter_path)
+                                            z +=1
+                                        except Exception as e:
+                                            error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                            await client.send_message(event.chat_id, error)
+                                            chaperror += "{}\n".format(c.chapter)
                             elif mgres.text == 4 or mgres.text == "4":
                                 lst = []
                                 for c in chapters:
@@ -176,14 +198,23 @@ async def create(event):
                                         print("started")
                                         print(f"#{c.chapter} | {c.title}")
                                         print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
-                                        chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
-                                        os.remove(chapter_path)
-                                        z +=1
+                                        try:
+                                            chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
+                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                            os.remove(chapter_path)
+                                            z +=1
+                                        except Exception as e:
+                                            error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                            await client.send_message(event.chat_id, error)
+                                            chaperror += "{}\n".format(c.chapter)
                                 
                             else:
                                 pass
-                            await client.send_message(event.chat_id, "COMPLETED")
+                            if chaperror != "":
+                                await client.send_message(event.chat_id, "COMPLETED\n\nPlease dowmload these chapter manually\n{}".format(chaperror))
+                            else:
+                                await client.send_message(event.chat_id, "  COMPLETED")
+                            print("completed")
 
 
 
