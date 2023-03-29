@@ -129,7 +129,7 @@ async def create(event):
                                         os.remove(chapter_path)
                                         z +=1
                                     except Exception as e:
-                                        error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                        error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".format(c.chapter)
                                         await client.send_message(event.chat_id, error)
                                         chaperror += "{}\n".format(c.chapter)
                             elif mgres.text == 2 or mgres.text == "2":
@@ -153,7 +153,7 @@ async def create(event):
                                                 os.remove(chapter_path)
                                                 z +=1
                                             except Exception as e:
-                                                error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                                error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".format(c.chapter)
                                                 await client.send_message(event.chat_id, error)
                                                 chaperror += "{}\n".format(c.chapter)
                                     else:      
@@ -167,7 +167,7 @@ async def create(event):
                                                 os.remove(chapter_path)
                                                 z +=1
                                             except Exception as e:
-                                                error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                                error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".format(c.chapter)
                                                 await client.send_message(event.chat_id, error)
                                                 chaperror += "{}\n".format(c.chapter)
                                             
@@ -186,7 +186,7 @@ async def create(event):
                                             os.remove(chapter_path)
                                             z +=1
                                         except Exception as e:
-                                            error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                            error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".format(c.chapter)
                                             await client.send_message(event.chat_id, error)
                                             chaperror += "{}\n".format(c.chapter)
                             elif mgres.text == 4 or mgres.text == "4":
@@ -204,7 +204,7 @@ async def create(event):
                                             os.remove(chapter_path)
                                             z +=1
                                         except Exception as e:
-                                            error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".formmat(c.chapter)
+                                            error = "COULD NOT DOWNLOAD CHAPTER NO. {}. PLEASE DOWNLOAD IT MANUALLY".format(c.chapter)
                                             await client.send_message(event.chat_id, error)
                                             chaperror += "{}\n".format(c.chapter)
                                 
