@@ -108,7 +108,8 @@ async def create(event):
                                 app = (f"#{c.chapter} | {c.title}")
                                 chap.append(app)
                             print(r.title, r.views)
-                            await client.send_message(event.chat_id, "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
+                            message = await client.send_message(event.chat_id, "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
+                            await client.pin_message(event.chat_id, message, notify=True)
                             chapters = r.chapter_list
                             print("done")
                             mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n3. ENTER A CHAPTER NO.\n4. DOWNLOAD LAST CHAPTER"
