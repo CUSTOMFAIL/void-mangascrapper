@@ -108,15 +108,15 @@ async def create(event):
                                 app = (f"#{c.chapter} | {c.title}")
                                 chap.append(app)
                             print(r.title, r.views)
-                            message = await client.send_message(event.chat_id, "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
-                            await client.pin_message(event.chat_id, message, notify=True)
-                            chapters = r.chapter_list
-                            print("done")
                             mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n3. ENTER A CHAPTER NO.\n4. DOWNLOAD LAST CHAPTER"
                             await conv.send_message("Enter the number : \n\n`{}`".format(str(mg)))
                             mgres = await conv.get_response(timeout = 90000)
                             error = ""
                             chaperror = ""
+                            message = await client.send_message(event.chat_id, "Name : {}\n\nChapter found :{}\n\nSTARTING DOWNLOAD".format(r.title, len(chap)))
+                            await client.pin_message(event.chat_id, message, notify=True)
+                            chapters = r.chapter_list
+                            print("done")
                             if mgres.text == 1 or mgres.text == "1":
                                 for c in chapters:
                                     print("started")
