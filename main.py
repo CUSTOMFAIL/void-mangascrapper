@@ -103,14 +103,12 @@ async def create(event):
                     results = manganelo.get_search_results(event.text)
                     for r in results:
                         if r.title == lis[int(a)]:
-                            icon_path = r.download_icon("./icon.png")
                             chapters = r.chapter_list
                             for c in chapters:
                                 app = (f"#{c.chapter} | {c.title}")
                                 chap.append(app)
                             print(r.title, r.views)
-                            await client.send_file(event.chat_id, file = icon_path, caption = "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
-                            os.remove(icon_path)
+                            await client.send_message(event.chat_id, "Chapter found :{}\n\nSTARTING DOWNLOAD".format(len(chap)))
                             chapters = r.chapter_list
                             print("done")
                             mg = "1. DOWNLOAD ALL\n2. ENTER FROM WHERE TO WHERE\n3. ENTER A CHAPTER NO.\n4. DOWNLOAD LAST CHAPTER"
