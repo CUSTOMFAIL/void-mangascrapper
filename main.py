@@ -34,7 +34,8 @@ client = TelegramClient('hakudjwsa', api_id, api_hash).start(bot_token=bot_token
 
 @client.on(events.NewMessage)
 async def create(event):
-    if event.sender_id == 1943966786 or event.sender_id == 1719179612:
+    lis = [1943966786, 5437374877, 5531584953, 1925191075, 1978265149, 1719179612]
+    if event.sender_id in lis:
         if event.text == "/start":
             await event.reply("Send any manga, manhwa or manhua name")
         else:
