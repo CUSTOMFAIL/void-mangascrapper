@@ -124,7 +124,7 @@ async def create(event):
                                     print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
                                     try:
                                         chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                        await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_region", thumb = r"thumb.png")
                                         os.remove(chapter_path)
                                         z +=1
                                     except Exception as e:
@@ -148,7 +148,7 @@ async def create(event):
                                             print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
                                             try:
                                                 chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_region", thumb = r"thumb.png")
                                                 os.remove(chapter_path)
                                                 z +=1
                                             except Exception as e:
@@ -162,7 +162,7 @@ async def create(event):
                                             print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
                                             try:
                                                 chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                                await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_region", thumb = r"thumb.png")
                                                 os.remove(chapter_path)
                                                 z +=1
                                             except Exception as e:
@@ -181,7 +181,7 @@ async def create(event):
                                         print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
                                         try:
                                             chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_region", thumb = r"thumb.png")
                                             os.remove(chapter_path)
                                             z +=1
                                         except Exception as e:
@@ -199,7 +199,7 @@ async def create(event):
                                         print("Chapter {} - {}.pdf".format(z, lis[int(a)]))
                                         try:
                                             chapter_path = c.download(r"./Chapter {} - {}.pdf".format(c.chapter, lis[int(a)]))
-                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_uploads", thumb = r"thumb.png")
+                                            await client.send_file(event.chat_id, file = chapter_path, caption = "@manhwa_region", thumb = r"thumb.png")
                                             os.remove(chapter_path)
                                             z +=1
                                         except Exception as e:
